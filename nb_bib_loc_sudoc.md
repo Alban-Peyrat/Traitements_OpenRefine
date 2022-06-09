@@ -7,7 +7,7 @@ Le but de ce traitement est de pouvoir déterminer pour une liste de PPN donnée
 ### Création de la liste
 
 Exportez d'Alma des __Titres physiques__ ou créer une liste de PPN.
-Créer ensuite un fichier contenant uniquement la colonne `Numéro de notice` (et la colonne `Disponibilité` si vous souhaitez exporter les cotes).
+Créez ensuite un fichier contenant uniquement la colonne `Numéro de notice` (et la colonne `Disponibilité` si vous souhaitez exporter les cotes).
 
 __Notes sur les cotes :__
 * Si la localisation contient dans son nom `;` ou que la cote contient `(`, la détection de la cote peut mal fonctionner,
@@ -77,7 +77,7 @@ for query in element.findall(".//query"):
         return str(is_located) + ";" + str(nbBib) + ";" + "CONSERVER"
 ```
 
-* Diviser la colonne `Nb de bib. localisée` en utilisant `;` comme séparateur, ce qui donnera les colonnes :
+* Divisez la colonne `Nb de bib. localisée` en utilisant `;` comme séparateur, ce qui donnera les colonnes :
   * `Notre bib. est localisée`
   * `Nb de bib. localisées`
   * `À conserver`
