@@ -1,6 +1,6 @@
 # Nombre de bibliothèques localisées dans le Sudoc
 
-Le but de ce projet est de pouvoir déterminer pour une liste de PPN donnée (originellement, les documents en magasin) le nombre de bibliothèques également localisées dans le Sudoc.
+Le but de ce traitement est de pouvoir déterminer pour une liste de PPN donnée le nombre de bibliothèques également localisées dans le Sudoc.
 
 ## Procédure
 
