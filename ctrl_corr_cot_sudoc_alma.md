@@ -1,7 +1,39 @@
 # Contrôle des correspondances des cotes Sudoc-Alma (ex-CoCo-SAlma)
 
-Le but de cet outil est de contrôler la correspondance des cotes pour un PPN entre les données d'exemplaire du Sudoc et les holdings d'Alma.
+Le but de ce traitement est de contrôler la correspondance des cotes pour un PPN entre les données d'exemplaire du Sudoc et les holdings d'Alma.
 Il signale également la présence de plusieurs cotes pour un même titre.
+
+## Interpréter les résultats
+
+### Colonne `Correspondance ?`
+
+Deux résultats différents sont possibles, accompagnés ou non de précisions :
+* `OUI` : toutes les cotes sont strictement égales entre les deux bases de données,
+* `NON` : tous les cas non couverts par `OUI`.
+
+En plus de ces deux résultats, des précisions peuvent être apportées :
+* `Plusieurs cotes Sudoc` : plusieurs cotes ont été détectées dans le Sudoc,
+* `Plusieurs cotes Alma` : plusieurs cotes ont été détectées dans Alma,
+* `Exemplaire(s) sans cote Sudoc` : une ou plusieurs localisations dans le Sudoc n'ont pas de `$a`,
+* `Exemplaire(s) sans cote Alma` : une ou plusieurs holdings dans Alma ont été détectées comme appartenant à la bibliothèque mais aucune cote n'y était renseignée,
+* `Aucune localisation Sudoc` : _au 09/06/2022, le script doit être revu pour gérer les cas où aucune cote n'est détectée pour le RCR sous la notice et le cas où la connexion à l'API a échoué_,
+* `Aucune holding Alma` : aucune holding n'a été trouvée pour la bibliothèque dans Alma.
+
+### Colonnes des cotes
+
+Dans les deux colonnes des cotes, plusieurs valeurs anormales peuvent apparaître :
+* `[Ex. sans cote]` : pour le Sudoc, signifie qu'une `930` avec le RCR a bien été trouvée mais qu'elle ne possédait pas de `$a`, pour Alma, cela signifie qu'une holding pour la bibliothèque a bien été trouvée, mais qu'elle ne possédait pas de `;` (séparateur présent avant la cote),
+* `[Pas d'holding]` : spécifique à Alma, indique qu'aucune holding n'a été trouvée pour la bibliothèque,
+* `[Pas de loc.]` :  _au 09/06/2022, le script doit être revu pour gérer les cas où aucune cote n'est détectée pour le RCR sous la notice et le cas où la connexion à l'API a échoué_,
+* aucune valeur affichée : spécifique à Alma (supposément), signifie que le script n'a pas été en mesure d'identifier une `(` après le `;`, ce qui arrive notamment si le champ `Numérotation A` des exemplaires de la holding est renseigné.
+
+Comme la méthode utilisée pour récupérer les cotes d'Alma n'est pas la plus précise possible, il peut arriver que celles-ci soient incorrectes, pour diverses raisons.
+
+### Colonne `PPN`
+
+Si le PPN n'a pas pu clairement être identifié, sa valeur deviendra `XXXXXXXXX`, et la requête ne sera pas envoyé à l'API de l'Abes.
+
+## Procédure
 
 ### Création de la liste
 
