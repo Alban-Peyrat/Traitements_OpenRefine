@@ -57,7 +57,7 @@ else:
      return value[ind:ind+9]
 ```
 
-* Créez une colonne `Cotes Alma` basée sur la colonne `Disponibilité` en utilisant l'expression `Python / Jython` suivante :
+* Créez une colonne `Cotes Alma` basée sur la colonne `Disponibilité` en utilisant l'expression `Python / Jython` suivante (__pensez à changer la valeur de `lib` si nécessaire (nom dans Alma)__) :
 
 ``` Python
 lib = "BU SVS - Josy Reiffers"
@@ -82,7 +82,7 @@ return ";".join(cote)
 if(value != "XXXXXXXXX", "https://www.sudoc.fr/"+value+".xml", null)
 ```
 
-* Créez une colonne `Cotes Sudoc` basée sur la colonne `Réponse Sudoc MARCXML` en utilisant l'expression `Python / Jython` suivante :
+* Créez une colonne `Cotes Sudoc` basée sur la colonne `Réponse Sudoc MARCXML` en utilisant l'expression `Python / Jython` suivante (__pensez à changer la valeur de `rcr` si nécessaire__) :
 
 ``` Python
 rcr = "330632101"
