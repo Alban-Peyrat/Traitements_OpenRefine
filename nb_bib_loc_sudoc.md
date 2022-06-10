@@ -26,7 +26,7 @@ else:
      return value[ind:ind+9]
 ```
 
-* _Optionnel :_ Créez une colonne `Cotes` basée sur la colonne `Disponibilité` en utilisant l'expression `Python / Jython` suivante :
+* _Optionnel :_ Créez une colonne `Cotes` basée sur la colonne `Disponibilité` en utilisant l'expression `Python / Jython` suivante (__pensez à changer la valeur de `lib` si nécessaire (nom dans Alma)__) :
 
 ``` Python
 lib = "BU SVS - Josy Reiffers"
@@ -48,7 +48,7 @@ return ";".join(cote)
 if(value != "XXXXXXXXX", "https://www.sudoc.fr/services/multiwhere/"+value+".xml", null)
 ```
 
-* Créez une colonne `Nb de bib. localisée` basée sur la colonne `Réponse Multiwhere` en utilisant l'expression `Python / Jython` suivante :
+* Créez une colonne `Nb de bib. localisée` basée sur la colonne `Réponse Multiwhere` en utilisant l'expression `Python / Jython` suivante (__pensez à changer la valeur de `rcr` et de `seuil` si nécessaire__) :
 
 ``` Python
 rcr = "330632101"
