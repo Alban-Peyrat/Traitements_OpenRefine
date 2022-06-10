@@ -97,11 +97,13 @@ if(value != "XXXXXXXXX", "https://www.sudoc.fr/"+value+".xml", null)
 rcr = "330632101"
 
 if value is None:
-    return "[Pas de loc.]"
+    return "[Erreur requête]"
 
 cote = []
 from xml.etree import ElementTree as ET
 element = ET.fromstring(value.encode("utf-8"))
+if element.find("controlfield[@tag='001']") == None:
+    return "[PPN incorrect]" #HTTP 404 is returned supposedly, so this doesn't happen
 for loc in element.findall(".//datafield[@tag='930']"):
     if loc.find("subfield[@code='b']").text == rcr:
         # Checks if there's a $a
@@ -109,7 +111,10 @@ for loc in element.findall(".//datafield[@tag='930']"):
             cote.append(loc.find("subfield[@code='a']").text)
         else:
             cote.append("[Ex. sans cote]")
-cote.sort()
+if len(cote) > 0:
+    cote.sort()
+else:
+    cote.append("[Pas de loc.]")
 return ";".join(cote)
 ```
 
