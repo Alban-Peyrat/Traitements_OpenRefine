@@ -50,11 +50,21 @@ __Notes sur les cotes :__
 * Créez une colonne `PPN` basée sur la colonne `Numéro de notice` en utilisant l'expression `Python / Jython` suivante :
 
 ``` Python
+import re
+reg = "(?![X])\D+"
 ind = value.find("(PPN)")+5
-if ind == 4:
-     return "XXXXXXXXX"
+if ind != 4:
+    return value[ind:ind+9]
+elif value.find("PPN ") != -1:
+    return value[value.find("PPN ")+4:value.find("PPN ")+13]
+elif value.find("PPN") != -1:
+    return value[value.find("PPN")+3:value.find("PPN ")+12]
+elif len(value.strip()) == 9 and len(re.sub(reg, "", str(value))) == 9:
+    return value.strip()
+elif len(value.strip()) < 9 and len(re.sub(reg, "", str(value))) < 9 and len(re.sub(reg, "", str(value))) == len(value.strip()):
+    return "0" * (9-len(value.strip())) + value.strip()
 else:
-     return value[ind:ind+9]
+    return "XXXXXXXXX"
 ```
 
 * Créez une colonne `Cotes Alma` basée sur la colonne `Disponibilité` en utilisant l'expression `Python / Jython` suivante (__pensez à changer la valeur de `lib` si nécessaire (nom dans Alma)__) :
@@ -66,7 +76,6 @@ for hold in value.split("\n"):
     if lib in hold:
         if ";" in hold:
             ind = hold.find(";")
-            # Attention, ne renvoie pas les cotes avec des parenthèses
             cote.append(hold[ind+1:hold[ind:].find("(")+ind].strip())
         else:
             cote.append("[Ex. sans cote]")
