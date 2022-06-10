@@ -1,4 +1,4 @@
-# Nombre de bibliothèques localisées dans le Sudoc
+# Nombre de bibliothèques localisées dans le Sudoc (ex-Projet P.A.)
 
 Le but de ce traitement est de pouvoir déterminer pour une liste de PPN donnée le nombre de bibliothèques également localisées dans le Sudoc.
 
