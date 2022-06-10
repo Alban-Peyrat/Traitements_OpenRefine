@@ -77,6 +77,46 @@ else:
 return ";".join(cote)
 ```
 
+### Isolement de la cote du Sudoc
+
+Le code ci-dessous permet de lister les cotes associées à un RCR dans le Sudoc.
+La variable `rcr` doit être modifiée si nécessaire.
+Si plusieurs cotes sont détectées, elles seront par défaut séparées par des `;`.
+
+Les résultats possibles sont :
+* `[Erreur requête]` : la requête n'a pas été exécutée ou n'a pas renvoyée de résultat,
+* `[PPN incorrect]` : __(ne s'affiche jamais)__ la requête a renvoyée un résultat qui n'est pas une notice en UNIMARC (parce que je dois gérer les erreurs de requêtes plutôt que de faire cette solution),
+* `[Ex. sans cote]` : une `930` avec le RCR est bien détectée mais elle n'a pas de `$a`,
+* cote : la valeur du `$a` de la `930` avec le RCR,
+* `[Pas de loc.]` : aucune `930` ne correspond au RCR
+
+Les cotes sont triées par ordre croissant avant d'être renvoyées.
+
+``` Python
+rcr = "330632101"
+
+if value is None:
+    return "[Erreur requête]"
+
+cote = []
+from xml.etree import ElementTree as ET
+element = ET.fromstring(value.encode("utf-8"))
+if element.find("controlfield[@tag='001']") == None:
+    return "[PPN incorrect]" #HTTP 404 is returned supposedly, so this doesn't happen
+for loc in element.findall(".//datafield[@tag='930']"):
+    if loc.find("subfield[@code='b']").text == rcr:
+        # Checks if there's a $a
+        if loc.find("subfield[@code='a']") != None:
+            cote.append(loc.find("subfield[@code='a']").text)
+        else:
+            cote.append("[Ex. sans cote]")
+if len(cote) > 0:
+    cote.sort()
+else:
+    cote.append("[Pas de loc.]")
+return ";".join(cote)
+```
+
 ### Rappels pour les requêtes
 
 *Throttle speed* définit l'intervalle entre les requêtes.
