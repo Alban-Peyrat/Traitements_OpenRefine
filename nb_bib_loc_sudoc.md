@@ -2,6 +2,21 @@
 
 Le but de ce traitement est de pouvoir déterminer pour une liste de PPN donnée le nombre de bibliothèques également localisées dans le Sudoc.
 
+## Interpréter les résultats
+
+Ci-dessous, la signification de chaque colonne :
+* `Numéro de notice` : les numéros de notice associé au titre dans Alma,
+* `PPN` : le PPN qui a été isolé à partir de la colonne précédente.
+Prend la valeur `XXXXXXXXX` si la détection du PPN a échouée [(cliquez pour plus de détails sur cette procédure)](../../#isolement-et-formatage-du-ppn-pour-le-sudoc),
+* `Cotes` : la ou les valeurs des cotes si un export Alma est utilisé [(cliquez pour plus de détails sur cette procédure)](../../#isolement-de-la-cote-depuis-un-export-titres-physiques-dalma),
+* `Notre bib. est localisée` : `OUI` si le RCR est localisé, sinon `NON`,
+* `Nb de bib. localisées` : le nombre total __d'autres__ bibliothèques localisées (le RCR renseigné est exclu du compte).
+Prend la valeur `0` si la requête au service Multiwhere n'a pas eu lieu ou a échoué,
+* `À conserver` :
+  * `CONSERVER` : le nombre d'autres bibliothèques localisées est __strictement__ supérieur au seuil renseigné,
+  * `DÉSHERBER` : le nombre d'autres bibliothèques localisées est inférieur __ou égal__ au seuil renseigné,
+  * `VÉRIFIER` : la requête au service Multiwhere n'a pas eu lieu ou a échoué (pas de détails sur l'échec).
+
 ## Procédure
 
 ### Création de la liste
