@@ -24,10 +24,6 @@ Prend la valeur `0` si la requête au service Multiwhere n'a pas eu lieu ou a é
 Exportez d'Alma des __Titres physiques__ ou créer une liste de PPN.
 Créez ensuite un fichier contenant uniquement la colonne `Numéro de notice` (et la colonne `Disponibilité` si vous souhaitez exporter les cotes).
 
-__Notes sur les cotes :__
-* Si la localisation contient dans son nom `;` ou que la cote contient `(`, la détection de la cote peut mal fonctionner,
-* Si plusieurs cotes sont détectées, elles seront séparées par des points-virgules.
-
 ### Open Refine
 
 * Ouvrez le fichier (ou importez les données dans un nouveau projet).
