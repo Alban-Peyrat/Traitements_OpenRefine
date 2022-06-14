@@ -42,10 +42,6 @@ Si le PPN n'a pas pu clairement être identifié, sa valeur deviendra `XXXXXXXXX
 Exportez d'Alma des __Titres physiques__.
 Créez ensuite un fichier contenant uniquement les colonnes `Numéro de notice` et `Disponibilité`.
 
-__Notes sur les cotes :__
-* Si la localisation contient dans son nom `;` ou que la cote contient `(`, la détection de la cote peut mal fonctionner,
-* Si plusieurs cotes sont détectées, elles seront séparées par des points-virgules.
-
 ### Open Refine
 
 * Ouvrez le fichier (ou importez les données dans un nouveau projet).
@@ -135,7 +131,7 @@ else:
     output.append("NON")
 
 # Analyse plus profonde des problèmes
-if "[Erreur requête]" in sudoc:
+if "[Erreur requête]".encode("utf-8") in sudoc.encode("utf-8"):
     output.append("Erreur requête Sudoc")
 if ";" in sudoc:
     output.append("Plusieurs cotes Sudoc")
