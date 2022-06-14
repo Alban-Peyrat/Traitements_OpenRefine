@@ -12,19 +12,21 @@ Deux résultats différents sont possibles, accompagnés ou non de précisions :
 * `NON` : tous les cas non couverts par `OUI`.
 
 En plus de ces deux résultats, des précisions peuvent être apportées :
+* `Erreur requête Sudoc` : la requête du Sudoc a échoué, sans plus de détails pour le moment,
 * `Plusieurs cotes Sudoc` : plusieurs cotes ont été détectées dans le Sudoc,
 * `Plusieurs cotes Alma` : plusieurs cotes ont été détectées dans Alma,
 * `Exemplaire(s) sans cote Sudoc` : une ou plusieurs localisations dans le Sudoc n'ont pas de `$a`,
 * `Exemplaire(s) sans cote Alma` : une ou plusieurs holdings dans Alma ont été détectées comme appartenant à la bibliothèque mais aucune cote n'y était renseignée,
-* `Aucune localisation Sudoc` : _au 09/06/2022, le script doit être revu pour gérer les cas où aucune cote n'est détectée pour le RCR sous la notice et le cas où la connexion à l'API a échoué_,
+* `Aucune localisation Sudoc` : aucune localisation dans le Sudoc pour le RCR,
 * `Aucune holding Alma` : aucune holding n'a été trouvée pour la bibliothèque dans Alma.
 
 ### Colonnes des cotes
 
 Dans les deux colonnes des cotes, plusieurs valeurs anormales peuvent apparaître :
+* `[Erreur requête]` : spécifique au Sudoc, indique que la requête a échoué, sans plus de détails pour le moment,
 * `[Ex. sans cote]` : pour le Sudoc, signifie qu'une `930` avec le RCR a bien été trouvée mais qu'elle ne possédait pas de `$a`, pour Alma, cela signifie qu'une holding pour la bibliothèque a bien été trouvée, mais qu'elle ne possédait pas de `;` (séparateur présent avant la cote),
 * `[Pas d'holding]` : spécifique à Alma, indique qu'aucune holding n'a été trouvée pour la bibliothèque,
-* `[Pas de loc.]` :  _au 09/06/2022, le script doit être revu pour gérer les cas où aucune cote n'est détectée pour le RCR sous la notice et le cas où la connexion à l'API a échoué_,
+* `[Pas de loc.]` :  aucune localisation dans le Sudoc pour le RCR,
 * aucune valeur affichée : spécifique à Alma (supposément), signifie que le script n'a pas été en mesure d'identifier une `(` après le `;`, ce qui arrive notamment si le champ `Numérotation A` des exemplaires de la holding est renseigné.
 
 Comme la méthode utilisée pour récupérer les cotes d'Alma n'est pas la plus précise possible, il peut arriver que celles-ci soient incorrectes, pour diverses raisons.
@@ -133,6 +135,8 @@ else:
     output.append("NON")
 
 # Analyse plus profonde des problèmes
+if "[Erreur requête]" in sudoc:
+    output.append("Erreur requête Sudoc")
 if ";" in sudoc:
     output.append("Plusieurs cotes Sudoc")
 if ";" in alma:
