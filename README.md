@@ -5,6 +5,7 @@ Procédures pour différents traitements dans Open Refine
 ## Liste des traitements
 * [Nombre de bibliothèques localisées dans le Sudoc (ex-Projet P.A.)](./nb_bib_loc_sudoc.md)
 * [Contrôle des correspondances des cotes Sudoc-Alma (ex-CoCo-SAlma)](./ctrl_corr_cot_sudoc_alma.md)
+* [Détection de multiples éditions d'un même titre (ex-CA3)](./multiple_eds.md)
 
 ## Communs des traitements
 
