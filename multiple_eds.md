@@ -69,6 +69,9 @@ if(value != "XXXXXXXXX", "https://www.idref.fr/services/biblio/"+value, null)
 * Créez une colonne `PPNs liés` basée sur la colonne `IdRef Biblio` en utilisant l'expression `Python / Jython` suivante :
 
 ``` Python
+if value is None:
+    return None
+
 from xml.etree import ElementTree as ET
 element = ET.fromstring(value.encode("utf-8"))
 
@@ -82,7 +85,7 @@ return ",".join(ppns)
 * Créez une colonne `SRU Alma` basée sur la colonne `PPNs liés` utilisant des URLs en utilisant l'expression `GREL` suivante (__pensez à remplacer `{SRU (UNM default)}` par la valeur associée dans le fichier `VALEURS_UB.txt`__) :
 
 ``` GREL
-if(value != "", "{SRU (UNM default)}" + "alma.other_system_number=" + value.split(",").join("%20or%20alma.other_system_number="), null)
+if(value != null, "{SRU (UNM default)}" + "alma.other_system_number=" + value.split(",").join("%20or%20alma.other_system_number="), null)
 ```
 
 * Créez une colonne `Résultats` basée sur la colonne `SRU Alma` en utilisant l'expression `Python / Jython` suivante (__pensez à changer la valeur de `bibID` (identifiant de la bibliothèque dans Alma) si nécessaire__) :
@@ -92,6 +95,9 @@ bibID = "1302100000"
 ns = {'sru': 'http://www.loc.gov/zing/srw/',
         'marc': 'http://www.loc.gov/MARC21/slim',
         'unm': 'info:srw/schema/8/unimarcxml-v0.1'}
+
+if value is None:
+    return None
 
 from xml.etree import ElementTree as ET
 element = ET.fromstring(value.encode("utf-8"))
