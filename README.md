@@ -13,6 +13,21 @@ Procédures pour différents traitements dans Open Refine
 
 Liste d'informations communes à plusieurs / tous les traitements
 
+### Récupérer les données d'un autre projet
+
+* Dans le projet qui recevra les données, créer une colonne basée sur la colonne qui servira à faire le lien avec l'expression GREL suivante :
+
+``` GREL
+cell.cross("PROJET 2", "key").cells["Colonne voulue"].value[0]
+```
+
+### Dupliquer des lignes pour séparer de multiples valeurs au sein d'une même cellule
+
+* Modifier la colonne contenant les cellules à séparer et sélectionner la division des cellules à multiples valeurs (_Edit cells → Split multi-valued cells..._)
+* Indiquer le séparateur
+* Valider
+* Modifier la colonne _All_ pour remplir les données vers le bas (_Edit columns → Fill down_)
+
 ### Isolement et formatage du PPN pour le Sudoc
 
 Le code ci-dessous permet d'isoler et formater les PPN selon cette logique :
