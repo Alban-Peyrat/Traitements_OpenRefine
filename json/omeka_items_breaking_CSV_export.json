@@ -1,0 +1,15 @@
+[
+    {
+      "op": "core/column-addition",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "baseColumnName": "Colonne 212",
+      "expression": "jython:import json\n\ntry:\n    val = json.loads(value)\nexcept ValueError:\n    return \"ERR\"\nelse:\n    return \"OK\"",
+      "onError": "set-to-blank",
+      "newColumnName": "Valid_JSON",
+      "columnInsertIndex": 212,
+      "description": "Create column Valid_JSON at index 212 based on column Colonne 212 using expression jython:import json\n\ntry:\n    val = json.loads(value)\nexcept ValueError:\n    return \"ERR\"\nelse:\n    return \"OK\""
+    }
+  ]
