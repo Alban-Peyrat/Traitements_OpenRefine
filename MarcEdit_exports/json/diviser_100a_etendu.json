@@ -1,0 +1,28 @@
+[
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "100$a",
+    "guessCellType": false,
+    "removeOriginalColumn": true,
+    "mode": "lengths",
+    "fieldLengths": [
+      8,
+      1,
+      4,
+      4,
+      3,
+      1,
+      1,
+      3,
+      1,
+      4,
+      4,
+      2
+    ],
+    "description": "Diviser la colonne 100$a par les longueurs de champs"
+  }
+]

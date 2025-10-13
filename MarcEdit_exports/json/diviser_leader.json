@@ -1,0 +1,24 @@
+[
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "000",
+    "guessCellType": false,
+    "removeOriginalColumn": true,
+    "mode": "lengths",
+    "fieldLengths": [
+      5,
+      1,
+      4,
+      1,
+      1,
+      5,
+      3,
+      4
+    ],
+    "description": "Diviser la colonne 000 par les longueurs de champs"
+  }
+]
