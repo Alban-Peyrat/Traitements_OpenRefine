@@ -4,6 +4,11 @@ Note : par expérience, OpenRefine détecte mal que les données sont contenues 
 
 ![Indiquer que les donnée ssont contenues entre guillemets](./img/enclose_cells.png)
 
+## Table des matières
+
+* [Diviser le leader par partie](#diviser-le-leader-par-partie)
+* [Diviser le 100$a par partie](#diviser-le-100a-par-partie)
+
 ## Diviser le leader par partie
 
 JSON : [`json/diviser_leader.json`](./json/diviser_leader.json) (assume que le leader est contenu dans la colonne `000`)
