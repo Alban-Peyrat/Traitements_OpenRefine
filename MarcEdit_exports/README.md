@@ -2,7 +2,7 @@
 
 Note : par expérience, OpenRefine détecte mal que les données sont contenues entre guillemets, donc penser à bien le faire si nécessaire.
 
-![Indiquer que les donnée ssont contenues entre guillemets](./img/enclose_cells.png)
+![Indiquer que les données sont contenues entre guillemets](./img/enclose_cells.png)
 
 ## Table des matières
 
