@@ -46,7 +46,6 @@ Basé sur une instance utilisant le module [Group (module for Omeka S)](https://
 
 Colonne *summary* :
 
-
 * `[WARNING]_HYBRID_MEDIAS_ILLEGAL_ITEM_VISIBILITY` : _valeur anormale_
 * `[WARNING]_ILLEGAL_ITEM_VISIBILITY` : _valeur anormale_
 * `[WARNING]_PRIVATE_ITEM_WITH_HYBRID_MEDIAS` : **le contenu est privé mais certains médias sont publics, d'autres sont privés**

@@ -18,6 +18,7 @@
     * [XML : extraire un controlfield](./Sudoc/README.md#xml--extraire-un-controlfield)
     * [XML : extraire un sous-champ (filtre possible par ILN, RCR ou EPN)](./Sudoc/README.md#xml--extraire-un-sous-champ-filtre-possible-par-iln-rcr-ou-epn)
     * [XML : extraire un champ complet au format WinIBW (filtre possible par ILN, RCR ou EPN)](./Sudoc/README.md#xml--extraire-un-champ-complet-au-format-winibw-filtre-possible-par-iln-rcr-ou-epn)
+    * [XML : compter le nombre de sous-champ (filtre possible par ILN, RCR ou EPN)](./Sudoc/README.md#xml--compter-le-nombre-de-sous-champs-filtre-possible-par-iln-rcr-ou-epn)
 * [Manipulations utiles](./manipulations_utiles.md) :
   * [Dupliquer des lignes pour séparer de multiples valeurs au sein d'une même cellule](./manipulations_utiles.md#dupliquer-des-lignes-pour-séparer-de-multiples-valeurs-au-sein-dune-même-cellule)
   * [Fusionner des lignes possédant la même clef](./manipulations_utiles.md#fusionner-des-lignes-possédant-la-même-clef)
